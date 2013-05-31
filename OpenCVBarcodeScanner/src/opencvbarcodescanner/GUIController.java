@@ -10,6 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -18,12 +20,19 @@ import javafx.scene.control.Label;
 public class GUIController implements Initializable {
     
     @FXML
-    private Label label;
+    private ImageView imageView;
+    
+    @FXML
+    private TextArea textArea;
+    
+    VideoThread videoThread;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        System.loadLibrary("opencv_java245");
+        videoThread = new VideoThread(imageView, textArea);
+        videoThread.setDaemon(true);
+        videoThread.start();
     }
     
     @Override
