@@ -49,10 +49,10 @@ public class VideoCapturer {
             byte[] inputImage = outputStream.toByteArray();
             outputStream.close();
             InputStream inputStream = new ByteArrayInputStream(inputImage);
-            BufferedImage bufferedImage = ImageIO.read(inputStream);
-            WritableImage wi = new WritableImage(640, 480);
-            SwingFXUtils.toFXImage(bufferedImage, wi);
-            return wi;
+//            BufferedImage bufferedImage = ImageIO.read(inputStream);
+//            WritableImage wi = new WritableImage(640, 480);
+//            SwingFXUtils.toFXImage(bufferedImage, wi);
+            return new Image(inputStream);
         } catch (IOException ex) {
             Logger.getLogger(VideoCapturer.class.getName()).log(Level.SEVERE, null, ex);
         }

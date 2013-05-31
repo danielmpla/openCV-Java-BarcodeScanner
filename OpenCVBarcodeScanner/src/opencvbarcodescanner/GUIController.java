@@ -6,10 +6,8 @@ package opencvbarcodescanner;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 
@@ -27,16 +25,11 @@ public class GUIController implements Initializable {
     
     VideoThread videoThread;
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
         System.loadLibrary("opencv_java245");
         videoThread = new VideoThread(imageView, textArea);
         videoThread.setDaemon(true);
         videoThread.start();
-    }
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
 }
